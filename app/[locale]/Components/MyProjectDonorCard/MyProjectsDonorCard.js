@@ -2,12 +2,13 @@ import Image from "next/image";
 
 const MyProjectsDonorCard = ({ donation }) => {
   const donor = donation?.cardholder.split(' ');
+  const isDisplaySecondWord = donor.length > 1 ? donor[1][0] : '';
   return (
     <>
       <div className="text-blackColor flex items-center space-x-4 cursor-pointer p-2 rounded-xl transition-all duration-300 ease-in-out hover:bg-blackColor hover:text-whiteColor ">
         <div className="w-[50px] h-[50px]">
           <Image
-            src={`https://via.placeholder.com/150/D4EE25/0A0A0A?text=${donor[0][0] + donor[1][0]}`}
+            src={`https://via.placeholder.com/150/D4EE25/0A0A0A?text=${donor[0][0] + isDisplaySecondWord}`}
             alt={donation?.cardholder}
             width={50}
             height={50}

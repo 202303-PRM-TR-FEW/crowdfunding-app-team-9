@@ -41,7 +41,7 @@ const FundingBoxDonationBox = ({ handleBtnClick, amount }) => {
           <span className="absolute left-2 top-1/2 -translate-y-1/2 pointer-events-none">$</span>
           <input
             placeholder="Custom"
-            className={`button-dark w-full cursor-default pl-5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none `}
+            className={`button-dark w-full cursor-default pl-5 outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none `}
             type="number"
             value={amount}
             onChange={(e) => handleBtnClick(e.target.value)}
