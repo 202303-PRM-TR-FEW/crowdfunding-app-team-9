@@ -50,7 +50,7 @@ function Page({ params }) {
       message = `${dayLeft} gün kaldı`;
     }
   }
-  const moneyRaised = project?.donations.reduce((acc, donation) => acc + Number(donation.amount), 0)
+  const moneyRaised = project?.donations?.reduce((acc, donation) => acc + Number(donation.amount), 0)
   const progressPercentage = (moneyRaised / project?.goalAmount) * 100;
   return (
     <div className="bg-whiteColor  mt-[70px]">
