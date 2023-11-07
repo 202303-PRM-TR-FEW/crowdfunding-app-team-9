@@ -233,7 +233,7 @@ const KickOffBox = () => {
               <div className="text-center">
                 <label htmlFor="file-upload" className={`file-label button-light py-2.5 ${errors.image && `bg-redColor text-red-500 border-red-500 hover:bg-lightRedColor hover:text-red-500 hover:opacity-60`}`}>
                   <FaUpload size={20} />
-                  <span className="ml-2 text-sm sm:text-base sm:text-lg">{t('Add media')}</span>
+                  <span className="ml-2 text-sm sm:text-base">{t('Add media')}</span>
                 </label>
                 <input
                   {...register('image')}

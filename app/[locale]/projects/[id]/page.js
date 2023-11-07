@@ -60,7 +60,7 @@ function Page({ params }) {
             <Image
               className="rounded-xl h-[200px] w-[200px] md:h-[350px] md:w-[400px] lg:h-[450px] lg:w-[450px] object-cover"
               alt={project?.title}
-              src={project?.image}
+              src={project?.image.includes('svg') ? `${project.image}.svg` : project.image}
               width={450}
               height={450}
             />
@@ -71,7 +71,7 @@ function Page({ params }) {
               <Image
                 className=" w-6 h-6 items-start rounded-full"
                 alt={project?.title}
-                src={project.profilPic ? project.profilPic : "/user.png"}
+                src={project.profilPic ? project.profilPic.includes('svg') ? `${project.profilPic}.svg` : project.profilPic : "/user.png"}
                 width={50}
                 height={50}
               />
