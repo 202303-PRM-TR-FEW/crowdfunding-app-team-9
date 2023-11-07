@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
@@ -70,7 +70,7 @@ function MobilNavbarWithUser({ bgColor, defaultLink, activeLink, selectedLink })
         <Image
           className={style.userImage}
           onClick={handleInfoBoxClick}
-          src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
+          src={profilPic ? (profilPic.includes('svg') ? `${profilPic}.svg` : profilPic) : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
           width={45}
           height={45}
           alt="Picture of the user"

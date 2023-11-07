@@ -11,6 +11,7 @@ const Page = () => {
   const searchInputVal = useSelector(state => state.auth.searchInputVal);
   const showMobilNav = useSelector(state => state.auth.showMobilNav);
 
+  console.log(projects)
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);

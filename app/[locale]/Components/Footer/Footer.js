@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCloseMobileNav } from '@/app/redux/features/authSlice';
@@ -13,7 +13,7 @@ function Footer() {
   const dispatch = useDispatch();
 
   const projectsWithTotalDonate = projects.map(project => {
-    const totalDonations = project.donations.reduce((total, donation) => total + Number(donation.amount), 0);
+    const totalDonations = project?.donations?.reduce((total, donation) => total + Number(donation.amount), 0);
     return {
       project,
       totalDonations
@@ -64,8 +64,8 @@ function Footer() {
                   popularProjects?.map((project) => (
                     <Link onClick={() => dispatch(setCloseMobileNav(false))} href={`/projects/${project.project.docId}`} key={project.project.id} className="flex items-center space-x-3 ease-in duration-200 hover:scale-105 ">
                       <Image
-                        src={project.project.image}
                         alt={project.project.title}
+                        src={project.project.image.includes('svg') ? `${project.project.image}.svg` : project.project.image}
                         width={70}
                         height={50}
                         className="rounded-lg shadow-lg w-[70px] h-[50px] object-fill "
@@ -94,8 +94,7 @@ function Footer() {
         </p>
       </div>
     </footer>
-
   )
 }
 
-export default Footer
+export default Footer;

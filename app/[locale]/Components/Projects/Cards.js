@@ -36,7 +36,7 @@ const Cards = ({ projects }) => {
                 <div className="image-wrapper flex justify-center items-center  ">
                   <Image
                     alt={project.title}
-                    src={project.image}
+                    src={project.image.includes('svg') ? `${project.image}.svg` : project.image}
                     width={300}
                     height={230}
                     className="rounded-lg w-[300px] h-[230px] object-cover "
@@ -48,7 +48,7 @@ const Cards = ({ projects }) => {
               <Link onClick={handleCardClick} href={`/projects/${project.docId}`}>
                 <div className="flex items-center justify-center space-x-2 text-sm">
                   <Image
-                    src={project.profilPic}
+                    src={project.profilPic.includes('svg') ? `${project.profilPic}.svg` : project.profilPic}
                     width={25}
                     height={25}
                     alt="user-profil-pic"
@@ -67,7 +67,7 @@ const Cards = ({ projects }) => {
                   <div
                     className="h-full bg-greenColor rounded-lg"
                     style={{
-                      width: `${(project.donations.reduce((acc, donation) => acc + Number(donation.amount), 0) / project.goalAmount) * 100
+                      width: `${(project?.donations?.reduce((acc, donation) => acc + Number(donation.amount), 0) / project.goalAmount) * 100
                         }%`,
                     }}
                   />
@@ -76,7 +76,7 @@ const Cards = ({ projects }) => {
                   <div className="raised flex flex-col justify-between">
                     <p className="text-sm  md:text-lg mt-1.5 ">{t("Raised:")}</p>
                     <p className="text-md  font-semibold  py-2 ">
-                      ${project.donations.reduce((acc, donation) => acc + Number(donation.amount), 0)}
+                      ${project?.donations?.reduce((acc, donation) => acc + Number(donation.amount), 0)}
                     </p>
                   </div>
                   <div className="goal flex flex-col justify-between">

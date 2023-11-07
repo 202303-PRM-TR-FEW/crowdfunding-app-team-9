@@ -19,7 +19,7 @@ function ProjectOfTheWeek() {
     let mostSupportedProject = null;
     let maxMoneyRaised = 0;
     for (const project of projects) {
-      const moneyRaised = project.donations.reduce((total, donation) => total + Number(donation.amount), 0);
+      const moneyRaised = project?.donations?.reduce((total, donation) => total + Number(donation.amount), 0);
       if (moneyRaised > maxMoneyRaised) {
         mostSupportedProject = project;
         maxMoneyRaised = moneyRaised;
@@ -37,7 +37,7 @@ function ProjectOfTheWeek() {
                   <Link onClick={() => { dispatch(setCloseMobileNav(false)) }} href={`/projects/${mostSupportedProject.docId}`}>
                     <Image
                       className="rounded-lg h-[200px] w-[200px] md:h-[350px] md:w-[400px] lg:h-[400px] lg:w-[400px] object-cover"
-                      src={mostSupportedProject.image}
+                      src={mostSupportedProject.image.includes('svg') ? `${mostSupportedProject.image}.svg`: mostSupportedProject.image}
                       width={400}
                       height={400}
                       alt="projectImage"

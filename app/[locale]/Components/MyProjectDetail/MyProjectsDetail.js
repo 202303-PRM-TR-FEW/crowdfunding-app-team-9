@@ -14,6 +14,11 @@ const MyProjectDetails = ({ project }) => {
     }, 1);
   };
 
+  // Handle SVG image
+  const projectImage = project?.image.includes('svg')
+    ? `${project.image}.svg`
+    : project.image;
+
   return (
     <div className="space-y-10">
       <h1 className="text-blackColor font-bold text-center text-4xl xl:text-[64px] lg:text-6xl lg:text-left md:text-5xl">
@@ -25,7 +30,7 @@ const MyProjectDetails = ({ project }) => {
       <div className="flex items-center justify-center lg:justify-start">
         <Image
           className="rounded-lg h-[200px] w-[200px] md:w-[400px] md:h-[300px] xl:w-[500px] xl:h-[320px] object-cover"
-          src={project?.image}
+          src={projectImage}
           alt="project image"
           width={450}
           height={320}

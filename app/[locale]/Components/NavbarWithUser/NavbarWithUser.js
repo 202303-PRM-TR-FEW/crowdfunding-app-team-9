@@ -88,7 +88,7 @@ function NavbarWithUser({ activeLink, defaultLink, selectedLink }) {
         <Image
           onClick={handleInfoBoxClick}
           className={style.userImage}
-          src={profilPic ? profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
+          src={profilPic ? profilPic.includes('svg') ? `${profilPic}.svg` : profilPic : `https://via.placeholder.com/150/0A0A0A/FAFAFA?text=${user.email[0].toUpperCase()}`}
           width={45}
           height={45}
           alt="Picture of the user"
