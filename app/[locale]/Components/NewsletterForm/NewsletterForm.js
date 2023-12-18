@@ -5,7 +5,6 @@ import { MdOutlineArrowBackIos } from 'react-icons/md';
 import { useDispatch } from "react-redux";
 import { setShowNewsletterForm } from "@/app/redux/features/authSlice";
 import { useRef, useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 import emailjs from '@emailjs/browser';
 import { toast } from "react-toastify";
 import { useTranslations } from "next-intl";
@@ -19,7 +18,6 @@ const NewsletterForm = () => {
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch();
   const containerRef = useRef();
-  const pathname = usePathname();
   const t = useTranslations('NewsletterForm');
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
@@ -27,7 +25,7 @@ const NewsletterForm = () => {
 
   emailjs.init('49EQMlcq2BdXR7HqC');
 
-  let template = pathname.split('/').includes('tr') ? 'tr_temp' : 'eng_temp'
+  let template = 'eng_temp';
 
   const onSubmit = async (data) => {
     setIsLoading(true)
@@ -37,13 +35,12 @@ const NewsletterForm = () => {
         recipient: data.email,
       });
       toast.success(
-        `${t("Congratulations")} ${
-          data.username[0].toUpperCase() + data.username.slice(1)
+        `${t("Congratulations")} ${data.username[0].toUpperCase() + data.username.slice(1)
         }! ${t("You have successfully subscribed to Givingly newsletter")}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+          draggable: false
+        });
     } catch (err) {
       toast.error(
         `${t("An error occurred while subscribing your project")}. ${t(
@@ -51,8 +48,8 @@ const NewsletterForm = () => {
         )}.`,
         {
           position: toast.POSITION.BOTTOM_RIGHT,
-        draggable: false
-      });
+          draggable: false
+        });
     } finally {
       setIsLoading(false)
       dispatch(setShowNewsletterForm())
@@ -65,7 +62,6 @@ const NewsletterForm = () => {
 
   useEffect(() => {
     window.addEventListener('click', handleOutClick);
-
     return () => {
       window.removeEventListener('click', handleOutClick)
     }
